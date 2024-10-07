@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35303.130
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasterCard.Web", "MasterCard.Web\MasterCard.Web.csproj", "{8E4226AD-B101-4AA2-B53C-8C0648E64018}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasterCard.Data", "MasterCard.Data\MasterCard.Data.csproj", "{C83F9C38-671C-408F-94A7-A5339122C86F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasterCard.Domain", "MasterCard.Domain\MasterCard.Domain.csproj", "{8158E60C-6893-4C49-A620-F80E90EE66BF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasterCard.Model", "MasterCard.Model\MasterCard.Model.csproj", "{B2270412-BC41-4CA1-8EFC-93C20350FA73}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasterCard.Service", "MasterCard.Service\MasterCard.Service.csproj", "{8F094A2B-0C3D-4146-97A3-50669EB7453E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasterCard.Utility", "MasterCard.Utility\MasterCard.Utility.csproj", "{B80C4EA6-220D-44FC-BEF3-FD1A56852327}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8E4226AD-B101-4AA2-B53C-8C0648E64018}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E4226AD-B101-4AA2-B53C-8C0648E64018}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E4226AD-B101-4AA2-B53C-8C0648E64018}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E4226AD-B101-4AA2-B53C-8C0648E64018}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C83F9C38-671C-408F-94A7-A5339122C86F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C83F9C38-671C-408F-94A7-A5339122C86F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C83F9C38-671C-408F-94A7-A5339122C86F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C83F9C38-671C-408F-94A7-A5339122C86F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8158E60C-6893-4C49-A620-F80E90EE66BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8158E60C-6893-4C49-A620-F80E90EE66BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8158E60C-6893-4C49-A620-F80E90EE66BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8158E60C-6893-4C49-A620-F80E90EE66BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2270412-BC41-4CA1-8EFC-93C20350FA73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2270412-BC41-4CA1-8EFC-93C20350FA73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2270412-BC41-4CA1-8EFC-93C20350FA73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2270412-BC41-4CA1-8EFC-93C20350FA73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F094A2B-0C3D-4146-97A3-50669EB7453E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F094A2B-0C3D-4146-97A3-50669EB7453E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F094A2B-0C3D-4146-97A3-50669EB7453E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F094A2B-0C3D-4146-97A3-50669EB7453E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B80C4EA6-220D-44FC-BEF3-FD1A56852327}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B80C4EA6-220D-44FC-BEF3-FD1A56852327}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B80C4EA6-220D-44FC-BEF3-FD1A56852327}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B80C4EA6-220D-44FC-BEF3-FD1A56852327}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F22981A9-8F2F-47D7-81E8-204CE1263506}
+	EndGlobalSection
+EndGlobal
