@@ -8,7 +8,7 @@ namespace MasterCard.Service
         void CreateCategory(Category commend);
         List<Category> GetAll();
         void Get(int id);
-        void UpdateCategory(int id);
+        void UpdateCategory(string commnd);
         void DeleteCategory(int id);
     }
 }

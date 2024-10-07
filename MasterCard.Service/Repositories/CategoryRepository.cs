@@ -39,7 +39,7 @@ public class CategoryRepository : ICategoryRepository
         return _masterCardContext.Categories.ToList();
     }
 
-    public void UpdateCategory(int id)
+    public void UpdateCategory(string commend)
     {
         throw new NotImplementedException();
     }
