@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MasterCard.Domain.Cards;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MasterCard.Web.Areas.Admin.Controllers
 {
@@ -10,7 +11,7 @@ namespace MasterCard.Web.Areas.Admin.Controllers
             return View();
         }
 
-        public IActionResult Create()
+        public IActionResult CreateCategory(Category command)
         {
             return View();
         }
