@@ -15,6 +15,19 @@
             IsDeleted = false;
             Cards = new List<Card>();   
         }
+        public void Edit(string title) 
+        {
+            Title = title;
+        }
+        public void Delete()
+        {
+            IsDeleted = true;
+        }
+        public void Restore()
+        {
+            IsDeleted = false;
+        }
+          
     }
 
     
