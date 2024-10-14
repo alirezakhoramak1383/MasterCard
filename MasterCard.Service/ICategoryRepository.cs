@@ -21,8 +21,7 @@ namespace MasterCard.Service
         {
             _masterCardContext = masterCardContext;
         }
-        // Hello Worlds
-
+        
         public void CreateCategory(Category commend)
         {
             _masterCardContext.Categories.Add(commend);
@@ -31,13 +30,7 @@ namespace MasterCard.Service
 
         public void DeleteCategory(int id)
         {
-            
-            var CategoryToDelete = _masterCardContext.Categories.FirstOrDefault(c => c.Id == id);
-            if (CategoryToDelete != null)
-            {
-                CategoryToDelete.IsDeleted = true;
-                _masterCardContext.SaveChanges();
-            }
+            throw new NotImplementedException();
         }
 
         public Category Get(int id)
@@ -45,19 +38,19 @@ namespace MasterCard.Service
             return _masterCardContext.Categories.FirstOrDefault(x => x.Id == id);
         }
 
-        public List<Category> GetAll(bool filter)
+        public List<Category> GetAll()
         {
-            return _masterCardContext.Categories.Where(c => c.IsDeleted == filter).ToList();
+           return _masterCardContext.Categories.ToList();
         }
+
         public void Save()
         {
             _masterCardContext.SaveChanges();
-            
         }
-            public void UpdateCategory(Category commend)
+
+        public void UpdateCategory(Category commend)
         {
-          //var CategoryToUpdate = _masterCardContext.Categories.Get
-          //  _masterCardContext.SaveChanges();
+            throw new NotImplementedException();
         }
     
     }
