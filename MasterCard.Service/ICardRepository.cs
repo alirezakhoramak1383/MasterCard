@@ -8,9 +8,10 @@ namespace MasterCard.Service
     {
         void Create(Card card);
         List<Card> GetAll();
-        void Get(int id);
+        Card Get(int id);
         void Update(int id);
         void Delete(int id);
+        void Save();
     }
 
     public class CardRepository : ICardRepository
@@ -24,7 +25,7 @@ namespace MasterCard.Service
         public void Create(Card card)
         {
             _masterCardContext.Cards.Add(card);
-            _masterCardContext.SaveChanges();
+            Save();
         }
 
         public void Delete(int id)
@@ -32,14 +33,19 @@ namespace MasterCard.Service
             throw new NotImplementedException();
         }
 
-        public void Get(int id)
+        public Card Get(int id)
         {
-            throw new NotImplementedException();
+            return _masterCardContext.Cards.FirstOrDefault(x => x.Id == id);
         }
 
         public List<Card> GetAll()
         {
             return _masterCardContext.Cards.ToList();
+        }
+
+        public void Save()
+        {
+             _masterCardContext.SaveChanges();
         }
 
         public void Update(int id)

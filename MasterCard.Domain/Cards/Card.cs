@@ -1,4 +1,6 @@
-﻿namespace MasterCard.Domain.Cards
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MasterCard.Domain.Cards
 {
     public class Card
     {
@@ -24,6 +26,22 @@
             Description = description;
             Icon = icon;
             Link = link;
+            IsDeleted = false;
+        }
+        public void Edit(string title, string description, string icon, string link)
+        {
+            Title = title;  
+            Description = description;
+            Icon = icon;
+            Link = link;
+            IsDeleted = false;
+        }
+        public void Delete() 
+        {
+            IsDeleted = true;
+        }
+        public void Restore()
+        {
             IsDeleted = false;
         }
     }
