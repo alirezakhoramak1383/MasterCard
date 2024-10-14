@@ -17,29 +17,13 @@
         public long CardCategoryId { get; set; }
         public virtual Category Category { get; set; }
 
-        public Card(string title, string description, string icon, string link)
+        public Card(long id, string title, string description, string icon, string link)
         {
+            Id = id;
             Title = title;
             Description = description;
             Icon = icon;
             Link = link;
-            IsDeleted = false;
-        }
-        public void Edit(string title,string description,string icon,string link,long categoryId)
-        {
-            Title=title;
-            Description = description;
-            Icon = icon;
-            Link = link;
-            CardCategoryId=categoryId;
-            IsDeleted = false;
-        }
-        public void Remove() 
-        {
-            IsDeleted = true;
-        }
-        public void Restore()
-        {
             IsDeleted = false;
         }
     }

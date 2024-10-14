@@ -6,12 +6,11 @@ namespace MasterCard.Service
     //CategoryInterface
     public interface ICategoryRepository
     {
-        void CreateCategory(Category command);
+        void CreateCategory(Category commend);
         List<Category> GetAll();
-        Category Get(int id);
-        void UpdateCategory(Category command);
+        void Get(int id);
+        void UpdateCategory(Category commnd);
         void DeleteCategory(int id);
-        void Save();
     }
     public class CategoryRepository : ICategoryRepository
     {
@@ -22,10 +21,10 @@ namespace MasterCard.Service
             _masterCardContext = masterCardContext;
         }
 
-        public void CreateCategory(Category command)
+        public void CreateCategory(Category commend)
         {
-            _masterCardContext.Categories.Add(command);
-            Save();
+            _masterCardContext.Categories.Add(commend);
+            _masterCardContext.SaveChanges();
         }
 
         public void DeleteCategory(int id)
@@ -33,7 +32,7 @@ namespace MasterCard.Service
             throw new NotImplementedException();
         }
 
-        public Category Get(int id)
+        public void Get(int id)
         {
             throw new NotImplementedException();
         }
@@ -43,12 +42,7 @@ namespace MasterCard.Service
             return _masterCardContext.Categories.ToList();
         }
 
-        public void Save()
-        {
-            _masterCardContext.SaveChanges();
-        }
-
-        public void UpdateCategory(Category command)
+        public void UpdateCategory(Category commend)
         {
             throw new NotImplementedException();
         }
