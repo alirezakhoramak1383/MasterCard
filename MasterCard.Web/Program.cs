@@ -1,7 +1,5 @@
 using MasterCard.Data.Context;
 using MasterCard.Service;
-using MasterCard.Service.Repositories;
-using MasterCard.Service.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
