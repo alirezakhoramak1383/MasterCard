@@ -7,7 +7,7 @@ namespace MasterCard.Service
     public interface ICategoryRepository
     {
         void CreateCategory(Category commend);
-        List<Category> GetAll();
+        List<Category> GetAll(bool filter);
         void Get(int id);
         void UpdateCategory(Category commnd);
         void DeleteCategory(int id);
@@ -20,6 +20,7 @@ namespace MasterCard.Service
         {
             _masterCardContext = masterCardContext;
         }
+        // Hello Worlds
 
         public void CreateCategory(Category commend)
         {
@@ -29,22 +30,28 @@ namespace MasterCard.Service
 
         public void DeleteCategory(int id)
         {
-            throw new NotImplementedException();
+            
+            var CategoryToDelete = _masterCardContext.Categories.FirstOrDefault(c => c.Id == id);
+            if (CategoryToDelete != null)
+            {
+                CategoryToDelete.IsDeleted = true;
+                _masterCardContext.SaveChanges();
+            }
         }
 
         public void Get(int id)
         {
-            throw new NotImplementedException();
+             _masterCardContext.Categories.Find(id);
         }
 
-        public List<Category> GetAll()
+        public List<Category> GetAll(bool filter)
         {
-            return _masterCardContext.Categories.ToList();
+            return _masterCardContext.Categories.Where(c => c.IsDeleted == filter).ToList();
         }
-
         public void UpdateCategory(Category commend)
         {
-            throw new NotImplementedException();
+          //var CategoryToUpdate = _masterCardContext.Categories.Get
+          //  _masterCardContext.SaveChanges();
         }
     }
 
