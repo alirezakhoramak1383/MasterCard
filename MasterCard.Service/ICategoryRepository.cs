@@ -49,6 +49,12 @@ namespace MasterCard.Service
         {
             return _masterCardContext.Categories.Where(c => c.IsDeleted == filter).ToList();
         }
+
+        public List<Category> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Save()
         {
             _masterCardContext.SaveChanges();
