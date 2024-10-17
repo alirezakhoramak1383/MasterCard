@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace MasterCard.Domain.Cards
+﻿namespace MasterCard.Domain.Cards
 {
     public class Card
     {
