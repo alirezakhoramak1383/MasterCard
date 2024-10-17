@@ -1,0 +1,28 @@
+﻿@using MasterCard.Web.ViewModel
+
+@model IEnumerable<CategoryViewModel>
+
+
+
+
+
+<div id="sidebar-menu">
+    <ul>
+    
+       @*  <li>
+            <a href="index.html" class="waves-effect"><i class="md md-home"></i><span> داشبورد </span></a>
+        </li> *@
+
+        <li class="has_sub">
+            <a href="#" class="waves-effect"><i class="md md-mail"></i><span> سامانه های عمومی </span><span class="pull-right"><i class="md md-add"></i></span></a>
+            <ul class="has_sub">
+                @foreach (var item in Model)
+                {
+                    <li><a href="#">@item.Title</a></li>
+                }
+            </ul>
+        </li>
+
+    </ul>
+    <div class="clearfix"></div>
+</div>

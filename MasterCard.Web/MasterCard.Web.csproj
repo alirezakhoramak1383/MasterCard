@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <ImplicitUsings>Disable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,15 +18,19 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.6" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MasterCard.Data\MasterCard.Data.csproj" />
     <ProjectReference Include="..\MasterCard.Domain\MasterCard.Domain.csproj" />
-    <ProjectReference Include="..\MasterCard.Model\MasterCard.Model.csproj" />
     <ProjectReference Include="..\MasterCard.Service\MasterCard.Service.csproj" />
     <ProjectReference Include="..\MasterCard.Utility\MasterCard.Utility.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\ViewComponents\" />
+    <Folder Include="Areas\Admin\Views\Home\Components\" />
   </ItemGroup>
 
 </Project>
