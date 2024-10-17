@@ -1,6 +1,4 @@
-﻿using DocumentFormat.OpenXml.Bibliography;
-using MasterCard.Data.Context;
-using MasterCard.Data.Migrations;
+﻿using MasterCard.Data.Context;
 using MasterCard.Domain.Cards;
 using MasterCard.Model;
 
@@ -11,7 +9,6 @@ namespace MasterCard.Service
     {
         void CreateCategory(Category commend);
         List<Category> GetAll();
-        List<CategoryViewModel> Search(string Command);
         Category Get(int id);
         void UpdateCategory(Category commend);
         bool DeleteCategory(int id);
@@ -32,7 +29,8 @@ namespace MasterCard.Service
             {
                 Id = commend.Id,
                 Title = commend.Title,
-                IsDeleted = false
+                IsDeleted = false,
+                Cards= commend.Cards,
             };
         _masterCardContext.Categories.Add(category);
          Save();
@@ -51,7 +49,7 @@ namespace MasterCard.Service
 
         public List<Category> GetAll()
         {
-           return _masterCardContext.Categories.ToList();
+           return _masterCardContext.Categories.Where(x=>x.IsDeleted==false).ToList();
         }
 
         public void Save()
@@ -59,23 +57,9 @@ namespace MasterCard.Service
             _masterCardContext.SaveChanges();
         }
 
-        public List<CategoryViewModel> Search(string Command)
-        {
-            var query = _masterCardContext.Categories.Select(x => new CategoryViewModel
-            {
-                Id = x.Id,
-                Title = x.Title,
-
-            });
-            if (!string.IsNullOrWhiteSpace(Command))
-                query = query.Where(x => x.Title.Contains(Command));
-
-            return query.OrderByDescending(x => x.Id).ToList();
-        }
-
         public void UpdateCategory(Category commend)
         {
-            var category = _masterCardContext.Categories.FirstOrDefault(x=>x.Id==commend.Id);
+            var category = _masterCardContext.Categories.Where(x=>x.IsDeleted==false).FirstOrDefault(x=>x.Id==commend.Id);
             if (category == null) return ;
             category.Title = commend.Title;
             Save();
