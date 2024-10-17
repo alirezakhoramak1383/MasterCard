@@ -19,22 +19,13 @@ namespace MasterCard.Domain.Cards
         public long CardCategoryId { get; set; }
         public virtual Category Category { get; set; }
 
-       
-        public void Edit(string title, string description, string icon, string link)
+        public Card(long id, string title, string description, string icon, string link)
         {
-            Title = title;  
+            Id = id;
+            Title = title;
             Description = description;
             Icon = icon;
             Link = link;
             IsDeleted = false;
-        }
-        public void Delete() 
-        {
-            IsDeleted = true;
-        }
-        public void Restore()
-        {
-            IsDeleted = false;
-        }
     }
 }

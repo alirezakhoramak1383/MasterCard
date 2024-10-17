@@ -1,4 +1,4 @@
-﻿@using MasterCard.Model
+﻿@using MasterCard.Web.ViewModel
 
 @model IEnumerable<CardViewModel>
 
@@ -22,8 +22,9 @@
                 </div>
                 <div class="clearfix"></div>
                 <hr />
+                <a href="@item.Link" class="text-warning">@item.Link</a>
             </div>
         </div>
     </div>
-
+    @* https://localhost:7143/images/SiteIcons/electronic.png *@
 }

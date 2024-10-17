@@ -6,15 +6,19 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-var builder = WebApplication.CreateBuilder(args);
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<ICardRepository, CardRepository>();
-builder.Services.AddTransient<ICategoryRepository,CategoryRepository>();
-builder.Services.AddDbContext<MasterCardContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MasterCard")));
-
-var app = builder.Build();
+        // Add services to the container.
+        builder.Services.AddControllersWithViews();
+        builder.Services.AddTransient<CardService, CardRepository>();
+        builder.Services.AddTransient<CategoryService, CategoryRepository>();
+        builder.Services.AddDbContext<MasterCardContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MasterCard")));
+        
+        var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -23,19 +27,21 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
 
-app.UseRouting();
+        app.UseRouting();
+        
+        app.UseAuthorization();
 
-app.UseAuthorization();
+        app.MapControllerRoute(
+            name: "areas",
+            pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
-app.MapControllerRoute(
-    name: "areas",
-    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+        app.MapControllerRoute(
+            name: "default",
+            pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.Run();
+        app.Run();
+    }
+}
