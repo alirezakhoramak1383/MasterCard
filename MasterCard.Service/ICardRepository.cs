@@ -1,5 +1,6 @@
 ﻿using MasterCard.Data.Context;
 using MasterCard.Domain.Cards;
+using MasterCard.Model;
 
 namespace MasterCard.Service
 {
@@ -9,6 +10,7 @@ namespace MasterCard.Service
         void Create(Card card);
         List<Card> GetAll();
         Card Get(int id);
+        List<CardViewModel> Search(string Command);
         void Update(int id);
         void Delete(int id);
         void Save();
@@ -24,7 +26,16 @@ namespace MasterCard.Service
         }
         public void Create(Card card)
         {
-            _masterCardContext.Cards.Add(card);
+            var cardModel = new Card()
+            {
+                Id = card.Id,
+                Description = card.Description,
+                Icon = card.Icon,
+                Title = card.Title,
+                Link = card.Link,
+                IsDeleted = false,
+            };
+            _masterCardContext.Cards.Add(cardModel);
             Save();
         }
 
@@ -46,6 +57,24 @@ namespace MasterCard.Service
         public void Save()
         {
              _masterCardContext.SaveChanges();
+        }
+
+        public List<CardViewModel> Search(string Command)
+        {
+            var query = _masterCardContext.Cards.Select(x => new CardViewModel
+            {
+                Id = x.Id,
+                Title = x.Title,
+                Description = x.Description,
+                Icon = x.Icon,
+                Link = x.Link,
+               
+
+            });
+            if (!string.IsNullOrWhiteSpace(Command))
+                query = query.Where(x => x.Title.Contains(Command));
+
+            return query.OrderByDescending(x => x.Id).ToList();
         }
 
         public void Update(int id)
