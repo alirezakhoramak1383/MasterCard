@@ -1,5 +1,8 @@
-﻿using MasterCard.Data.Context;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using MasterCard.Data.Context;
+using MasterCard.Data.Migrations;
 using MasterCard.Domain.Cards;
+using MasterCard.Model;
 
 namespace MasterCard.Service
 {
@@ -8,9 +11,10 @@ namespace MasterCard.Service
     {
         void CreateCategory(Category commend);
         List<Category> GetAll();
+        List<CategoryViewModel> Search(string Command);
         Category Get(int id);
         void UpdateCategory(Category commend);
-        void DeleteCategory(int id);
+        bool DeleteCategory(int id);
         void Save();
     }
     public class CategoryRepository : ICategoryRepository
@@ -24,13 +28,20 @@ namespace MasterCard.Service
         
         public void CreateCategory(Category commend)
         {
-            _masterCardContext.Categories.Add(commend);
-            Save();
+            var category = new Category()
+            {
+                Id = commend.Id,
+                Title = commend.Title,
+                IsDeleted = false
+            };
+        _masterCardContext.Categories.Add(category);
+         Save();
         }
 
-        public void DeleteCategory(int id)
+        public bool DeleteCategory(int id)
         {
-            throw new NotImplementedException();
+            var query = _masterCardContext.Categories.Any(x=>x.IsDeleted==false);
+            return query;
         }
 
         public Category Get(int id)
@@ -48,9 +59,26 @@ namespace MasterCard.Service
             _masterCardContext.SaveChanges();
         }
 
+        public List<CategoryViewModel> Search(string Command)
+        {
+            var query = _masterCardContext.Categories.Select(x => new CategoryViewModel
+            {
+                Id = x.Id,
+                Title = x.Title,
+
+            });
+            if (!string.IsNullOrWhiteSpace(Command))
+                query = query.Where(x => x.Title.Contains(Command));
+
+            return query.OrderByDescending(x => x.Id).ToList();
+        }
+
         public void UpdateCategory(Category commend)
         {
-            throw new NotImplementedException();
+            var category = _masterCardContext.Categories.FirstOrDefault(x=>x.Id==commend.Id);
+            if (category == null) return ;
+            category.Title = commend.Title;
+            Save();
         }
     
     }
