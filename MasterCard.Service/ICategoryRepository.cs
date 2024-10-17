@@ -22,7 +22,7 @@ namespace MasterCard.Service
         {
             _masterCardContext = masterCardContext;
         }
-        
+
         public void CreateCategory(Category commend)
         {
             var category = new Category()
@@ -64,7 +64,7 @@ namespace MasterCard.Service
             category.Title = commend.Title;
             Save();
         }
-    
+
     }
 
-}
+}   
