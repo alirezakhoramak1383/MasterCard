@@ -2,7 +2,9 @@ using MasterCard.Service;
 using MasterCard.Web.Models;
 using MasterCard.Web.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace MasterCard.Web.Controllers
 {

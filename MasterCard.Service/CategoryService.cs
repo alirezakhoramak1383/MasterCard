@@ -1,5 +1,6 @@
 ﻿using MasterCard.Data.Context;
 using MasterCard.Domain.Cards;
+using MasterCard.Model;
 
 namespace MasterCard.Service
 {
@@ -10,7 +11,7 @@ namespace MasterCard.Service
         Category Get(int id);
         void CreateCategory(Category commend);
         void UpdateCategory(Category commend);
-        void DeleteCategory(int id);
+        bool DeleteCategory(int id);
         void Save();
     }
     public class CategoryRepository : CategoryService
@@ -35,19 +36,23 @@ namespace MasterCard.Service
 
         public void CreateCategory(Category commend)
         {
-            _masterCardContext.Categories.Add(commend);
-            Save();
+            var category = new Category()
+            {
+                Id = commend.Id,
+                Title = commend.Title,
+                IsDeleted = false,
+                Cards= commend.Cards,
+            };
+        _masterCardContext.Categories.Add(category);
+         Save();
         }
 
-        public void UpdateCategory(Category commend)
+        public bool DeleteCategory(int id)
         {
-            throw new NotImplementedException();
+            var query = _masterCardContext.Categories.Any(x=>x.IsDeleted==false);
+            return query;
         }
 
-        public void DeleteCategory(int id)
-        {
-            throw new NotImplementedException();
-        }
 
 
         public void Save()
@@ -55,7 +60,13 @@ namespace MasterCard.Service
             _masterCardContext.SaveChanges();
         }
 
-
+        public void UpdateCategory(Category commend)
+        {
+            var category = _masterCardContext.Categories.Where(x=>x.IsDeleted==false).FirstOrDefault(x=>x.Id==commend.Id);
+            if (category == null) return ;
+            category.Title = commend.Title;
+            Save();
+        }
 
     }
 
