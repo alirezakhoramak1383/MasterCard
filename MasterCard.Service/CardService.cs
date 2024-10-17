@@ -5,18 +5,18 @@ using MasterCard.Model;
 namespace MasterCard.Service
 {
     //CardInterface
-    public interface ICardRepository
+    public interface CardService
     {
-        void Create(Card card);
-        List<Card> GetAll();
+        List<Card> Get();
         Card Get(int id);
+        void Create(Card card);
         List<CardViewModel> Search(string Command);
         void Update(int id);
         void Delete(int id);
         void Save();
     }
 
-    public class CardRepository : ICardRepository
+    public class CardRepository : CardService
     {
         private readonly MasterCardContext _masterCardContext;
 
@@ -24,6 +24,16 @@ namespace MasterCard.Service
         {
             _masterCardContext = masterCardContext;
         }
+        public List<Card> Get()
+        {
+            return _masterCardContext.Cards.ToList();
+        }
+
+        public Card Get(int id)
+        {
+            return _masterCardContext.Cards.FirstOrDefault(x => x.Id == id);
+        }
+
         public void Create(Card card)
         {
             var cardModel = new Card()
@@ -39,24 +49,22 @@ namespace MasterCard.Service
             Save();
         }
 
+        public void Update(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+
         public void Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Card Get(int id)
-        {
-            return _masterCardContext.Cards.FirstOrDefault(x => x.Id == id);
-        }
 
-        public List<Card> GetAll()
-        {
-            return _masterCardContext.Cards.ToList();
-        }
 
         public void Save()
         {
-             _masterCardContext.SaveChanges();
+            _masterCardContext.SaveChanges();
         }
 
         public List<CardViewModel> Search(string Command)
@@ -82,5 +90,4 @@ namespace MasterCard.Service
             throw new NotImplementedException();
         }
     }
-
 }

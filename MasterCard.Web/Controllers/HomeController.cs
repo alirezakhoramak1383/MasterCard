@@ -1,6 +1,6 @@
-using MasterCard.Model;
 using MasterCard.Service;
 using MasterCard.Web.Models;
+using MasterCard.Web.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,8 +10,8 @@ namespace MasterCard.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ICardRepository CardRepository;
-        public HomeController(ICardRepository cardRepository)
+        private readonly CardService CardRepository;
+        public HomeController(CardService cardRepository)
         {
             this.CardRepository = cardRepository;
         }
@@ -28,7 +28,7 @@ namespace MasterCard.Web.Controllers
             //});
             //return View("Index", model);
 
-            IEnumerable<CardViewModel> model = CardRepository.GetAll().Select(s => new CardViewModel
+            var model = CardRepository.Get().Select(s => new CardViewModel
             {
                 Id = s.Id,
                 Title = s.Title,
