@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Admin\ViewComponents\**" />
+    <Compile Remove="Areas\Admin\Views\Home\Components\**" />
+    <Content Remove="Areas\Admin\ViewComponents\**" />
+    <Content Remove="Areas\Admin\Views\Home\Components\**" />
+    <EmbeddedResource Remove="Areas\Admin\ViewComponents\**" />
+    <EmbeddedResource Remove="Areas\Admin\Views\Home\Components\**" />
+    <None Remove="Areas\Admin\ViewComponents\**" />
+    <None Remove="Areas\Admin\Views\Home\Components\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="6.12.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
@@ -26,11 +37,6 @@
     <ProjectReference Include="..\MasterCard.Domain\MasterCard.Domain.csproj" />
     <ProjectReference Include="..\MasterCard.Service\MasterCard.Service.csproj" />
     <ProjectReference Include="..\MasterCard.Utility\MasterCard.Utility.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Admin\ViewComponents\" />
-    <Folder Include="Areas\Admin\Views\Home\Components\" />
   </ItemGroup>
 
 </Project>

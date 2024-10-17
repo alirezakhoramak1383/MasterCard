@@ -1,6 +1,7 @@
 ﻿using MasterCard.Service;
 using MasterCard.Web.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace MasterCard.Web.ViewComponents
 
@@ -15,7 +16,7 @@ namespace MasterCard.Web.ViewComponents
         }
         public IViewComponentResult Invoke()
         {
-            IEnumerable<CategoryViewModel> model = CategoryRepository.Get().Select(s => new CategoryViewModel
+            var model = CategoryRepository.Get().Select(s => new CategoryViewModel
             {
                 Id = s.Id,
                 Title = s.Title,
