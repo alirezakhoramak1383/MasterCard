@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MasterCard.Model
+namespace MasterCard.Web.ViewModel
 {
-    public  class CardViewModel
+    public class CardViewModel
     {
         public long Id { get; set; }
         public string Title { get; set; }

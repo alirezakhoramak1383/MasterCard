@@ -4,17 +4,17 @@ using MasterCard.Domain.Cards;
 namespace MasterCard.Service
 {
     //CardInterface
-    public interface ICardRepository
+    public interface CardService
     {
-        void Create(Card card);
-        List<Card> GetAll();
+        List<Card> Get();
         Card Get(int id);
+        void Create(Card card);
         void Update(int id);
         void Delete(int id);
         void Save();
     }
 
-    public class CardRepository : ICardRepository
+    public class CardRepository : CardService
     {
         private readonly MasterCardContext _masterCardContext;
 
@@ -22,15 +22,9 @@ namespace MasterCard.Service
         {
             _masterCardContext = masterCardContext;
         }
-        public void Create(Card card)
+        public List<Card> Get()
         {
-            _masterCardContext.Cards.Add(card);
-            Save();
-        }
-
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
+            return _masterCardContext.Cards.ToList();
         }
 
         public Card Get(int id)
@@ -38,20 +32,29 @@ namespace MasterCard.Service
             return _masterCardContext.Cards.FirstOrDefault(x => x.Id == id);
         }
 
-        public List<Card> GetAll()
+        public void Create(Card card)
         {
-            return _masterCardContext.Cards.ToList();
-        }
-
-        public void Save()
-        {
-             _masterCardContext.SaveChanges();
+            _masterCardContext.Cards.Add(card);
+            Save();
         }
 
         public void Update(int id)
         {
             throw new NotImplementedException();
         }
-    }
 
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+        public void Save()
+        {
+            _masterCardContext.SaveChanges();
+        }
+
+    }
 }

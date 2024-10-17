@@ -24,9 +24,13 @@
   <ItemGroup>
     <ProjectReference Include="..\MasterCard.Data\MasterCard.Data.csproj" />
     <ProjectReference Include="..\MasterCard.Domain\MasterCard.Domain.csproj" />
-    <ProjectReference Include="..\MasterCard.Model\MasterCard.Model.csproj" />
     <ProjectReference Include="..\MasterCard.Service\MasterCard.Service.csproj" />
     <ProjectReference Include="..\MasterCard.Utility\MasterCard.Utility.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\ViewComponents\" />
+    <Folder Include="Areas\Admin\Views\Home\Components\" />
   </ItemGroup>
 
 </Project>

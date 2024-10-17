@@ -9,11 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasterCard.Data", "MasterCa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasterCard.Domain", "MasterCard.Domain\MasterCard.Domain.csproj", "{8158E60C-6893-4C49-A620-F80E90EE66BF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasterCard.Model", "MasterCard.Model\MasterCard.Model.csproj", "{B2270412-BC41-4CA1-8EFC-93C20350FA73}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasterCard.Service", "MasterCard.Service\MasterCard.Service.csproj", "{8F094A2B-0C3D-4146-97A3-50669EB7453E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasterCard.Utility", "MasterCard.Utility\MasterCard.Utility.csproj", "{B80C4EA6-220D-44FC-BEF3-FD1A56852327}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,18 +29,10 @@ Global
 		{8158E60C-6893-4C49-A620-F80E90EE66BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8158E60C-6893-4C49-A620-F80E90EE66BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8158E60C-6893-4C49-A620-F80E90EE66BF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B2270412-BC41-4CA1-8EFC-93C20350FA73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B2270412-BC41-4CA1-8EFC-93C20350FA73}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B2270412-BC41-4CA1-8EFC-93C20350FA73}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B2270412-BC41-4CA1-8EFC-93C20350FA73}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8F094A2B-0C3D-4146-97A3-50669EB7453E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8F094A2B-0C3D-4146-97A3-50669EB7453E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F094A2B-0C3D-4146-97A3-50669EB7453E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F094A2B-0C3D-4146-97A3-50669EB7453E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B80C4EA6-220D-44FC-BEF3-FD1A56852327}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B80C4EA6-220D-44FC-BEF3-FD1A56852327}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B80C4EA6-220D-44FC-BEF3-FD1A56852327}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B80C4EA6-220D-44FC-BEF3-FD1A56852327}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

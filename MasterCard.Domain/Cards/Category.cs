@@ -1,7 +1,10 @@
-﻿namespace MasterCard.Domain.Cards
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MasterCard.Domain.Cards
 {
     public class Category
     {
+        [Key]
         public long Id { get; set; }
 
         public string Title { get; set; }
@@ -9,7 +12,7 @@
         public bool IsDeleted { get; set; }
 
         public virtual List<Card> Cards { get; set; }
-        public Category(string title)
+        public Category(string title="deafult title.")
         {
             Title = title;
             IsDeleted = false;

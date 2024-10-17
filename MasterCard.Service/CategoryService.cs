@@ -4,33 +4,26 @@ using MasterCard.Domain.Cards;
 namespace MasterCard.Service
 {
     //CategoryInterface
-    public interface ICategoryRepository
+    public interface CategoryService
     {
-        void CreateCategory(Category commend);
-        List<Category> GetAll();
+        List<Category> Get();
         Category Get(int id);
+        void CreateCategory(Category commend);
         void UpdateCategory(Category commend);
         void DeleteCategory(int id);
         void Save();
     }
-    public class CategoryRepository : ICategoryRepository
+    public class CategoryRepository : CategoryService
     {
         private readonly MasterCardContext _masterCardContext;
-
         public CategoryRepository(MasterCardContext masterCardContext)
         {
             _masterCardContext = masterCardContext;
         }
 
-        public void CreateCategory(Category commend)
+        public List<Category> Get()
         {
-            _masterCardContext.Categories.Add(commend);
-            Save();
-        }
-
-        public void DeleteCategory(int id)
-        {
-            throw new NotImplementedException();
+            return _masterCardContext.Categories.ToList();
         }
 
         public Category Get(int id)
@@ -38,14 +31,12 @@ namespace MasterCard.Service
             return _masterCardContext.Categories.FirstOrDefault(x => x.Id == id);
         }
 
-        public List<Category> GetAll()
-        {
-            return _masterCardContext.Categories.ToList();
-        }
 
-        public void Save()
+
+        public void CreateCategory(Category commend)
         {
-            _masterCardContext.SaveChanges();
+            _masterCardContext.Categories.Add(commend);
+            Save();
         }
 
         public void UpdateCategory(Category commend)
@@ -53,6 +44,19 @@ namespace MasterCard.Service
             throw new NotImplementedException();
         }
 
+        public void DeleteCategory(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void Save()
+        {
+            _masterCardContext.SaveChanges();
+        }
+
+
+
     }
 
-}   
+}
