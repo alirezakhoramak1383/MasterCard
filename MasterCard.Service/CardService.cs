@@ -49,11 +49,7 @@ namespace MasterCard.Service
             Save();
         }
 
-        public void Update(int id)
-        {
-            throw new NotImplementedException();
-        }
-
+     
 
         public void Delete(int id)
         {
