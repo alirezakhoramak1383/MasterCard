@@ -7,6 +7,7 @@
         public string Title { get; set; }
 
         public bool IsDeleted { get; set; }
+        public bool IsActive {  get; set; }
 
         public virtual List<Card> Cards { get; set; }
     }  

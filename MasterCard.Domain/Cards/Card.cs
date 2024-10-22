@@ -13,17 +13,10 @@
         public string Link { get; set; }
 
         public bool IsDeleted { get; set; }
+        public bool IsActive {  get; set; }
 
         public long CardCategoryId { get; set; }
         public virtual Category Category { get; set; }
 
-        public Card(long id, string title, string description, string icon, string link)
-        {
-            Id = id;
-            Title = title;
-            Description = description;
-            Icon = icon;
-            Link = link;
-            IsDeleted = false;
     }
 }

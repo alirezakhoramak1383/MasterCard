@@ -1,8 +1,8 @@
+using MasterCard.Data.Context;
 using MasterCard.Service;
 using MasterCard.Web.Models;
 using MasterCard.Web.ViewModel;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
@@ -10,25 +10,18 @@ namespace MasterCard.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly CardService CardRepository;
-        public HomeController(CardService cardRepository)
+        private readonly CardService _cardRepository;
+        private readonly MasterCardContext _masterCardContext;
+
+        public HomeController(CardService cardRepository, MasterCardContext masterCardContext)
         {
-            this.CardRepository = cardRepository;
+            _cardRepository = cardRepository;
+            _masterCardContext = masterCardContext;
         }
 
         public IActionResult Index()
         {
-
-            //IEnumerable<StudentViewModel> model = studentRepository.GetAllStudents().Select(s => new StudentViewModel
-            //{
-            //    Id = s.Id,
-            //    Name = $"{s.FirstName} {s.LastName}",
-            //    EnrollmentNo = s.EnrollmentNo,
-            //    Email = s.Email
-            //});
-            //return View("Index", model);
-
-            var model = CardRepository.Get().Select(s => new CardViewModel
+            var model = _cardRepository.Get().Select(s => new CardViewModel
             {
                 Id = s.Id,
                 Title = s.Title,

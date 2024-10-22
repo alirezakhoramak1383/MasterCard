@@ -3,6 +3,7 @@ using MasterCard.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MasterCard.Data.Migrations
 {
     [DbContext(typeof(MasterCardContext))]
-    partial class MasterCardContextModelSnapshot : ModelSnapshot
+    [Migration("20241017064613_SeedDatabas")]
+    partial class SeedDatabas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,9 +45,6 @@ namespace MasterCard.Data.Migrations
                         .HasMaxLength(700)
                         .HasColumnType("nvarchar(700)");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -71,7 +71,6 @@ namespace MasterCard.Data.Migrations
                             CardCategoryId = 1L,
                             Description = "نسخه جدید (سازگار با مرورگرهای گوگل کروم و فایرفاکس)",
                             Icon = "https://localhost:7143/images/SiteIcons/chargoon.png",
-                            IsActive = false,
                             IsDeleted = false,
                             Link = "http://office5.miu.ir",
                             Title = "سامانه اتوماسیون اداری نسخه 5"
@@ -82,7 +81,6 @@ namespace MasterCard.Data.Migrations
                             CardCategoryId = 1L,
                             Description = "",
                             Icon = "https://localhost:7143/images/SiteIcons/foodCourt.png",
-                            IsActive = false,
                             IsDeleted = false,
                             Link = "https://food.miu.ac.ir",
                             Title = "سامانه تغذیه"
@@ -93,7 +91,6 @@ namespace MasterCard.Data.Migrations
                             CardCategoryId = 1L,
                             Description = "گردشگری، تسهیلات، هدایا و بیمه",
                             Icon = "https://localhost:7143/images/SiteIcons/workers.png",
-                            IsActive = false,
                             IsDeleted = false,
                             Link = "http://irefah.miu.ir/",
                             Title = "سامانه رفاهی کارکنان"
@@ -104,7 +101,6 @@ namespace MasterCard.Data.Migrations
                             CardCategoryId = 1L,
                             Description = "پست الکترونیک سازمانی المصطفی (مدیران، اساتید و کارکنان)",
                             Icon = "https://localhost:7143/images/SiteIcons/electronic.png",
-                            IsActive = false,
                             IsDeleted = false,
                             Link = "https://mail.miu.ac.ir",
                             Title = "پست الکترونیک المصطفی"
@@ -118,9 +114,6 @@ namespace MasterCard.Data.Migrations
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -138,35 +131,30 @@ namespace MasterCard.Data.Migrations
                         new
                         {
                             Id = 1L,
-                            IsActive = false,
                             IsDeleted = false,
                             Title = "ریاست"
                         },
                         new
                         {
                             Id = 2L,
-                            IsActive = false,
                             IsDeleted = false,
                             Title = "معاونت آموزش"
                         },
                         new
                         {
                             Id = 3L,
-                            IsActive = false,
                             IsDeleted = false,
                             Title = "معاونت فرهنگی تربیتی"
                         },
                         new
                         {
                             Id = 4L,
-                            IsActive = false,
                             IsDeleted = false,
                             Title = "معاونت پژوهش"
                         },
                         new
                         {
                             Id = 5L,
-                            IsActive = false,
                             IsDeleted = false,
                             Title = "معاونت بین الملل"
                         });

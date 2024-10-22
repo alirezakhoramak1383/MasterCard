@@ -39,4 +39,8 @@
     <ProjectReference Include="..\MasterCard.Utility\MasterCard.Utility.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>
