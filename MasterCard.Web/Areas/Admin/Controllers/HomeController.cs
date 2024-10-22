@@ -19,18 +19,11 @@ namespace MasterCard.Web.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            var model = CardRepository.Get().Select(s => new CardViewModel
-            {
-                Id = s.Id,
-                Title = s.Title,
-                Description = s.Description,
-                Icon = s.Icon,
-                Link = s.Link
-            });
+            var model = CardRepository.Get();
             return View("Index", model);
         }
         [HttpPost]
-        public IActionResult Index(AddCardViewModel viewModel)
+        public IActionResult Index(CardViewModel viewModel)
         {
             var card = new Card
             {
@@ -39,7 +32,8 @@ namespace MasterCard.Web.Areas.Admin.Controllers
                 Link = viewModel.Link,
                 Icon = viewModel.Icon,
                 IsDeleted = viewModel.IsDeleted,
-            }; 
+                CardCategoryId = 1
+            };
             CardRepository.Create(card);
             CardRepository.Save();
 

@@ -1,6 +1,5 @@
-﻿@using MasterCard.Web.ViewModel
+﻿@model IEnumerable<MasterCard.Domain.Cards.Card>
 
-@model IEnumerable<CardViewModel>
 
 <div>
     <div>
@@ -16,46 +15,9 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">ایجاد پست لینک جدید</h4>
                 </div>
-                <form method="post">
-                    <div class="modal-body">
-                        <div class="mt-3">
-                            <label class="form-label">نام</label>
-                            <input type="text" class="form-control" />
-                        </div>
 
-                        <div class="mt-3">
-                            <label class="form-label">توضیحات</label>
-                            <input type="text" class="form-control" />
-                        </div>
+                @await Component.InvokeAsync("AdminDashboard")
 
-
-                        <div class="mt-3">
-                            <label class="form-label">لینک</label>
-                            <input type="text" class="form-control"  />
-                        </div>
-
-
-                        <div class="mt-3">
-                            <label class="form-label">آیکن</label>
-                            <input type="text" class="form-control" />
-                        </div>
-
-                        <div class="mt-3">
-                            <label class="form-label">دسته بندی</label>
-                            <input type="text" class="form-control" />
-                        </div>
-
-                        <div class="mt-3">
-                            <label class="form-check-label" for="IsDeleted">حذف شده</label>
-                            <input type="checkbox" class="form-check-input" id="IsDeleted"  />
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-success" data-dismiss="modal" onsubmit="">ایجاد</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
-                    </div>
-                </form>
             </div>
 
         </div>
@@ -64,7 +26,7 @@
 </div>
 
 
-<hr /> 
+<hr />
 <table class="table table-bordered">
     <thead class="thead-dark">
         <tr>

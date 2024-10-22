@@ -44,12 +44,13 @@ namespace MasterCard.Service
                 Title = card.Title,
                 Link = card.Link,
                 IsDeleted = false,
+                CardCategoryId = card.CardCategoryId,
             };
             _masterCardContext.Cards.Add(cardModel);
             Save();
         }
 
-     
+
 
         public void Delete(int id)
         {
@@ -72,7 +73,7 @@ namespace MasterCard.Service
                 Description = x.Description,
                 Icon = x.Icon,
                 Link = x.Link,
-               
+
 
             });
             if (!string.IsNullOrWhiteSpace(Command))
