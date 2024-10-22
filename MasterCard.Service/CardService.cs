@@ -11,7 +11,7 @@ namespace MasterCard.Service
         Card Get(int id);
         void Create(Card card);
         List<CardViewModel> Search(string Command);
-        void Update(int id);
+        void Update(Card command);
         void Delete(int id);
         void Save();
     }
@@ -24,6 +24,9 @@ namespace MasterCard.Service
         {
             _masterCardContext = masterCardContext;
         }
+
+
+        // impelement
         public List<Card> Get()
         {
             return _masterCardContext.Cards.ToList();
@@ -54,11 +57,13 @@ namespace MasterCard.Service
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var card = _masterCardContext.Cards.Find(id);
+            if (card != null)
+            {
+                card.IsDeleted = true;
+                Save();
+            }
         }
-
-
-
         public void Save()
         {
             _masterCardContext.SaveChanges();
@@ -82,9 +87,17 @@ namespace MasterCard.Service
             return query.OrderByDescending(x => x.Id).ToList();
         }
 
-        public void Update(int id)
+        public void Update(Card command)
         {
-            throw new NotImplementedException();
+            var cardModel = _masterCardContext.Cards.Find(command.Id);
+            if (cardModel != null && !cardModel.IsDeleted)
+            {
+                cardModel.Description = command.Description;
+                cardModel.Icon = command.Icon;
+                cardModel.Title = command.Title;
+                cardModel.Link = command.Link;
+            }
+            Save();
         }
     }
 }

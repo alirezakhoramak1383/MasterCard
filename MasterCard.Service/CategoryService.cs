@@ -1,6 +1,5 @@
 ﻿using MasterCard.Data.Context;
 using MasterCard.Domain.Cards;
-using MasterCard.Model;
 
 namespace MasterCard.Service
 {
@@ -11,7 +10,7 @@ namespace MasterCard.Service
         Category Get(int id);
         void CreateCategory(Category commend);
         void UpdateCategory(Category commend);
-        bool DeleteCategory(int id);
+        void DeleteCategory(int id);
         void Save();
     }
     public class CategoryRepository : CategoryService
@@ -22,6 +21,7 @@ namespace MasterCard.Service
             _masterCardContext = masterCardContext;
         }
 
+        //implement
         public List<Category> Get()
         {
             return _masterCardContext.Categories.ToList();
@@ -29,10 +29,8 @@ namespace MasterCard.Service
 
         public Category Get(int id)
         {
-            return _masterCardContext.Categories.FirstOrDefault(x => x.Id == id);
+            return _masterCardContext.Categories.FirstOrDefault(x => x.Id == id && !x.IsDeleted);
         }
-
-
 
         public void CreateCategory(Category commend)
         {
@@ -47,14 +45,15 @@ namespace MasterCard.Service
          Save();
         }
 
-        public bool DeleteCategory(int id)
+        public void DeleteCategory(int id)
         {
-            var query = _masterCardContext.Categories.Any(x=>x.IsDeleted==false);
-            return query;
+            var category = _masterCardContext.Categories.Find(id);
+            if (category != null)
+            {
+                category.IsDeleted = true;
+                Save();
+            }
         }
-
-
-
         public void Save()
         {
             _masterCardContext.SaveChanges();
@@ -62,9 +61,11 @@ namespace MasterCard.Service
 
         public void UpdateCategory(Category commend)
         {
-            var category = _masterCardContext.Categories.Where(x=>x.IsDeleted==false).FirstOrDefault(x=>x.Id==commend.Id);
-            if (category == null) return ;
-            category.Title = commend.Title;
+            var cardModel = _masterCardContext.Categories.Find(commend.Id);
+            if (cardModel != null && !cardModel.IsDeleted)
+            {
+              cardModel.Title = commend.Title;
+            }
             Save();
         }
 
