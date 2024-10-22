@@ -11,7 +11,7 @@ namespace MasterCard.Service
         Card Get(int id);
         void Create(Card card);
         List<CardViewModel> Search(string Command);
-        void Update(int id);
+        void Update(Card command);
         void Delete(int id);
         void Save();
     }
@@ -81,9 +81,17 @@ namespace MasterCard.Service
             return query.OrderByDescending(x => x.Id).ToList();
         }
 
-        public void Update(int id)
+        public void Update(Card command)
         {
-            throw new NotImplementedException();
+            var cardModel = _masterCardContext.Cards.FirstOrDefault(x => x.Id == command.Id);
+            if (cardModel != null)
+            {
+                cardModel.Description = command.Description;
+                cardModel.Icon = command.Icon;
+                cardModel.Title = command.Title;
+                cardModel.Link = cardModel.Link;
+            }
+            Save();
         }
     }
 }
