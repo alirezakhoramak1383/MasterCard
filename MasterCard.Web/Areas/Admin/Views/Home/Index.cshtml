@@ -1,1 +1,89 @@
-﻿
+﻿@using MasterCard.Web.ViewModel
+
+@model IEnumerable<CardViewModel>
+
+<div>
+    <div>
+        <button class="btn btn-success" data-toggle="modal" data-target="#myModal">ایجاد لینک +</button>
+    </div>
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">ایجاد پست لینک جدید</h4>
+                </div>
+                <form method="post">
+                    <div class="modal-body">
+                        <div class="mt-3">
+                            <label class="form-label">نام</label>
+                            <input type="text" class="form-control" />
+                        </div>
+
+                        <div class="mt-3">
+                            <label class="form-label">توضیحات</label>
+                            <input type="text" class="form-control" />
+                        </div>
+
+
+                        <div class="mt-3">
+                            <label class="form-label">لینک</label>
+                            <input type="text" class="form-control"  />
+                        </div>
+
+
+                        <div class="mt-3">
+                            <label class="form-label">آیکن</label>
+                            <input type="text" class="form-control" />
+                        </div>
+
+                        <div class="mt-3">
+                            <label class="form-label">دسته بندی</label>
+                            <input type="text" class="form-control" />
+                        </div>
+
+                        <div class="mt-3">
+                            <label class="form-check-label" for="IsDeleted">حذف شده</label>
+                            <input type="checkbox" class="form-check-input" id="IsDeleted"  />
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success" data-dismiss="modal" onsubmit="">ایجاد</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<hr /> 
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>اسم</th>
+            <th>توضیحات</th>
+            <th>آیکن</th>
+            <th>لینک</th>
+            <th>دسته بندی</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Description</td>
+                <td>@item.Icon</td>
+                <td>@item.Link</td>
+            </tr>
+        }
+    </tbody>
+</table>
